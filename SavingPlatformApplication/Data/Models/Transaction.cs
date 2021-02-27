@@ -6,7 +6,7 @@ using SavingPlatformApplication.Data.Models.Enums;
 
 namespace SavingPlatformApplication.Data.Models
 {
-    public class Transaction
+    public class Transaction : BaseModel
     {
         public decimal Price { get; set; }
 

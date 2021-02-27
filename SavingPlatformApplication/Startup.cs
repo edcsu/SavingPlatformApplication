@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SavingPlatformApplication.Data;
+using SavingPlatformApplication.Repositories.Contracts;
+using SavingPlatformApplication.Repositories.Implementations;
 
 namespace SavingPlatformApplication
 {
@@ -24,6 +26,14 @@ namespace SavingPlatformApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<ICreditRepository, CreditRepository>();
+            services.AddScoped<IDepositRepository, DepositRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<ISavingsGroupRepository, SavingsGroupRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
