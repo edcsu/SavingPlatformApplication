@@ -4,18 +4,7 @@ namespace SavingPlatformApplication.Data.Models
 {
 
 #nullable disable
-    public class SavingsGroup : BaseModel
+    public class SavingsGroup : Client
     {
-        public string Name { get; set; }
-
-        public Address Address { get; set; }
-
-        public ICollection<Member> Members { get; set; }
-
-        public ICollection<Credit> Credits { get; set; }
-
-        public ICollection<Deposit> Deposits { get; set; }
-
-        public ICollection<Transaction> Transactions { get; set; }
     }
 }
