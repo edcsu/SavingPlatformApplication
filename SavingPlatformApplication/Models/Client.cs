@@ -8,6 +8,8 @@ namespace SavingPlatformApplication.Models
 {
     public class Client : BaseModel
     {
+        public Address Address { get; set; }
+        
         public string Email { get; set; }
         
         public string PhoneNumber { get; set; }
@@ -17,6 +19,10 @@ namespace SavingPlatformApplication.Models
         public DateTime BirthDate { get; set; }
 
         public decimal Balance { get; set; }
+
+        public ICollection<Asset> CreatedAssets { get; set; }
+
+        public ICollection<Asset> PurchasedAssets { get; set; }
 
         public ICollection<SavingsGroup> SavingsGroups { get; set; }
         
