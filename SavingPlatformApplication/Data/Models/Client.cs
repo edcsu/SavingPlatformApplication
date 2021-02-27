@@ -20,7 +20,7 @@ namespace SavingPlatformApplication.Data.Models
 
         public DateTime BirthDate { get; set; }
 
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
 
         public ICollection<Credit> Credits { get; set; }
 
