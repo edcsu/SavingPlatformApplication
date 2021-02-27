@@ -6,7 +6,7 @@ using System.Transactions;
 
 namespace SavingPlatformApplication.Models
 {
-    public class Client : BaseModel
+    public class Member : BaseModel
     {
         public Address Address { get; set; }
         
@@ -19,10 +19,6 @@ namespace SavingPlatformApplication.Models
         public DateTime BirthDate { get; set; }
 
         public decimal Balance { get; set; }
-
-        public ICollection<Asset> CreatedAssets { get; set; }
-
-        public ICollection<Asset> PurchasedAssets { get; set; }
 
         public ICollection<SavingsGroup> SavingsGroups { get; set; }
         

@@ -8,6 +8,12 @@ namespace SavingPlatformApplication.Models
 
         public Address Address { get; set; }
 
-        public ICollection<Client> Clients { get; set; }
+        public ICollection<Member> Members { get; set; }
+
+        public ICollection<Credit> Credits { get; set; }
+
+        public ICollection<Deposit> Deposits { get; set; }
+
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }

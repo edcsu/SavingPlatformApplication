@@ -7,6 +7,8 @@ namespace SavingPlatformApplication.Models
         public decimal Amount { get; set; }
 
         public Guid ClientId { get; set; }
-        public Client Client { get; set; }
+        public bool IsMadeByMember { get; set; }
+        public Member Member { get; set; }
+        public SavingsGroup SavingsGroup { get; set; }
     }
 }
