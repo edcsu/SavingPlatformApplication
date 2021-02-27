@@ -4,7 +4,7 @@ namespace SavingPlatformApplication.Data.Models
 {
     public class Deposit : BaseModel
     {
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         public Guid ClientId { get; set; }
         public bool IsMadeByMember { get; set; }

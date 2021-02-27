@@ -8,7 +8,7 @@ namespace SavingPlatformApplication.Data.Models
 {
     public class Transaction : BaseModel
     {
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
         public TransactionType Type { get; set; }
 
