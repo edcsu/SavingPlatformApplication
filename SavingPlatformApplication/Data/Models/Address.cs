@@ -12,7 +12,8 @@ namespace SavingPlatformApplication.Data.Models
 
         public string Town { get; set; }
 
-        public string StreetName { get; set; }
+#nullable enable
+        public string? StreetName { get; set; }
 
     }
 }
