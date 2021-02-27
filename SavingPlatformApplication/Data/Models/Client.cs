@@ -22,8 +22,6 @@ namespace SavingPlatformApplication.Data.Models
 
         public decimal Balance { get; set; }
 
-        public ICollection<SavingsGroup> SavingsGroups { get; set; }
-        
         public ICollection<Credit> Credits { get; set; }
 
         public ICollection<Deposit> Deposits { get; set; }

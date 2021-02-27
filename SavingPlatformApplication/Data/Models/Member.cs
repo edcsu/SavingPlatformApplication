@@ -10,5 +10,6 @@ namespace SavingPlatformApplication.Data.Models
 #nullable disable
     public class Member : Client
     {
+        public ICollection<SavingsGroup> SavingsGroups { get; set; }
     }
 }
