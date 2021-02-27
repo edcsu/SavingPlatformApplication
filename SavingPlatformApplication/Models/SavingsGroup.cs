@@ -1,6 +1,6 @@
 ﻿namespace SavingPlatformApplication.Models
 {
-    public class SavingsGroup
+    public class SavingsGroup : BaseModel
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SavingPlatformApplication.Models
 {
-    public class Deposit
+    public class Deposit : BaseModel
     {
     }
 }
