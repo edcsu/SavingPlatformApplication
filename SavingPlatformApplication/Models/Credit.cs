@@ -10,6 +10,7 @@ namespace SavingPlatformApplication.Models
 
         public DateTime PaymentPeriod { get; set; }
 
+#nullable disable
         public bool IsMadeByMember { get; set; }
         public Member Member { get; set; }
         public SavingsGroup SavingsGroup { get; set; }

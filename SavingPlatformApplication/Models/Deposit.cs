@@ -8,6 +8,7 @@ namespace SavingPlatformApplication.Models
 
         public Guid ClientId { get; set; }
         public bool IsMadeByMember { get; set; }
+#nullable disable
         public Member Member { get; set; }
         public SavingsGroup SavingsGroup { get; set; }
     }

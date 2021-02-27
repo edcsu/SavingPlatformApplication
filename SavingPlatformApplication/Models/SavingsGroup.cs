@@ -2,6 +2,8 @@
 
 namespace SavingPlatformApplication.Models
 {
+
+#nullable disable
     public class SavingsGroup : BaseModel
     {
         public string Name { get; set; }

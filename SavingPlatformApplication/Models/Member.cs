@@ -6,6 +6,8 @@ using System.Transactions;
 
 namespace SavingPlatformApplication.Models
 {
+
+#nullable disable
     public class Member : BaseModel
     {
         public Address Address { get; set; }

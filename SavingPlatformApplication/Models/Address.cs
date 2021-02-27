@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SavingPlatformApplication.Models
 {
+#nullable disable
     public class Address : BaseModel
     {
         public string Country { get; set; }
