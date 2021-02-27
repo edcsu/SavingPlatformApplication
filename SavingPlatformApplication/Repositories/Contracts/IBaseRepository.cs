@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SavingPlatformApplication.Repositories.Contracts
 {
-    public interface IBaseRepository<T>
+    public interface IBaseRepository
     {
         /// <summary>
         /// Get All records of a given entity
         /// </summary>
         /// <param name="queryParameters"></param>
         /// <returns></returns>
-        Task<List<T>> GetAllAsync( CancellationToken cancellationToken = default);
+        Task<List<T>> GetAllAsync<T>( CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create an enntity
@@ -21,7 +21,7 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// <param name="t">Entity is of type T</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<T> AddAsync(T t, CancellationToken cancellationToken = default);
+        Task<T> AddAsync<T>(T t, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Check whether an entity of type T exists 
@@ -29,14 +29,14 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<bool> ExistsAsync<Student>(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> ExistsAsync<T>(Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get the total number of entities
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> GetCountAsync(CancellationToken cancellationToken = default);
+        Task<int> GetCountAsync<T>(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Find an entity of type T
@@ -44,7 +44,7 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<T> FindAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<T> FindAsync<T>(Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an entity of type T
@@ -52,6 +52,6 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// <param name="t"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<T> UpdateAsync(T t, CancellationToken cancellationToken = default);
+        Task<T> UpdateAsync<T>(T t, CancellationToken cancellationToken = default);
     }
 }

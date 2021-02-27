@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SavingPlatformApplication.Repositories.Contracts;
 
 namespace SavingPlatformApplication.Repositories.Implementations
 {
-    public class MemberRepository<Member> : BaseRepository<Member>
+    public class MemberRepository : BaseRepository, IMemberRepository
     {
     }
 }
