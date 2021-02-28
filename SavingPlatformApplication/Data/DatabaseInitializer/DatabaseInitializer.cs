@@ -21,7 +21,7 @@ namespace SavingPlatformApplication.Data.DatabaseInitializer
 
         private static void SeedSavingsGroups(ApplicationDbContext context)
         {
-            context.SavingsGroups.AddRange(GenerateFakeData.GetSampleSavingsGroups(150));
+            context.SavingsGroups.AddRange(GenerateFakeData.GetSampleSavingsGroups(10));
             context.SaveChanges();
         }
     }
