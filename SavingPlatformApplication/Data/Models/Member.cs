@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
+using SavingPlatformApplication.Data.Models.Enums;
 
 namespace SavingPlatformApplication.Data.Models
 {
@@ -17,6 +18,8 @@ namespace SavingPlatformApplication.Data.Models
         public string PhoneNumber { get; set; }
 
         public string FullName { get; set; }
+
+        public Gender Gender { get; set; } 
 
         public DateTime BirthDate { get; set; }
 

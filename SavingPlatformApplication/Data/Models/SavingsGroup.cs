@@ -15,7 +15,7 @@ namespace SavingPlatformApplication.Data.Models
 
         public string FullName { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime DateFounded { get; set; }
 
         public double Balance { get; set; }
 
