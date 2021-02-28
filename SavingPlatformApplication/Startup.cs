@@ -46,6 +46,7 @@ namespace SavingPlatformApplication
             services.AddScoped<ISavingsGroupRepository, SavingsGroupRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
 
+            services.AddTransient<ISavingsGroupService, SavingsGroupService>();
             services.AddTransient<IMemberService, MemberService>();
 
 

@@ -22,35 +22,30 @@ namespace SavingPlatformApplication.Controllers
             _memberService = memberService;
         }
 
-        // GET: api/<MembersController>
         [HttpGet]
         public async Task<IEnumerable<Member>> GetAsync()
         {
             return await _memberService.GetMembersAsync();
         }
 
-        // GET api/<MembersController>/5
         [HttpGet("{id:Guid}")]
         public async Task<MemberViewModel> GetAsync(Guid id)
         {
             return await _memberService.GetMemberAsync(id);
         }
 
-        // POST api/<MembersController>
         [HttpPost]
         public async Task<MemberViewModel> PostAsync([FromBody] MemberPostModel postModel)
         {
             return await _memberService.AddMemberAsync(postModel);
         }
 
-        // PUT api/<MembersController>/5
         [HttpPut("{id:Guid}")]
         public async Task<MemberViewModel> PutAsync(Guid id, [FromBody] MemberUpdateModel updateModel)
         {
             return await _memberService.UpdateMemberAsync(id, updateModel);
         }
 
-        // DELETE api/<MembersController>/5
         [HttpDelete("{id:Guid}")]
         public async Task<Guid> DeleteAsync(Guid id)
         {

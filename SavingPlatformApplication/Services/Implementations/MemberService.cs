@@ -24,7 +24,7 @@ namespace SavingPlatformApplication.Services.Implementations
             var model = MapperProfiles.MapMemberPostModeltoMemberModel(postModel);
 
             var member = await _memberRepository.AddAsync(model);
-            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
+            return MapperProfiles.MapMemberModelToMemberViewModel(member);
         }
 
         public async Task<Guid> DeleteMemberAsync(Guid id)
@@ -40,7 +40,7 @@ namespace SavingPlatformApplication.Services.Implementations
         public async Task<MemberViewModel> GetMemberAsync(Guid id)
         {
             var member = await _memberRepository.FindAsync<Member>(id);
-            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
+            return MapperProfiles.MapMemberModelToMemberViewModel(member);
         }
 
         public async Task<List<Member>> GetMembersAsync()
@@ -55,10 +55,10 @@ namespace SavingPlatformApplication.Services.Implementations
 
         public async Task<MemberViewModel> UpdateMemberAsync(Guid id, MemberUpdateModel updateModel)
         {
-            var model = MapperProfiles.MapMemberUpdateModeltoMemberModel(id, updateModel);
+            var model = MapperProfiles.MapMemberUpdateModelToMemberModel(id, updateModel);
 
             var member = await _memberRepository.UpdateAsync(model);
-            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
+            return MapperProfiles.MapMemberModelToMemberViewModel(member);
         }
     }
 }
