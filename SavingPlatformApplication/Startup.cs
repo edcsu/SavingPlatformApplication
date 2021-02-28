@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
+using SavingPlatformApplication.Core.Extensions;
 using SavingPlatformApplication.Data;
 using SavingPlatformApplication.Repositories.Contracts;
 using SavingPlatformApplication.Repositories.Implementations;
@@ -93,6 +94,8 @@ namespace SavingPlatformApplication
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseApiExceptionHandler();
+            
             app.UseRouting();
 
             app.UseSwagger();
