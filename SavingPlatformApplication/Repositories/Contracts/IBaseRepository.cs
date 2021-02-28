@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SavingPlatformApplication.Data.Models;
 
 namespace SavingPlatformApplication.Repositories.Contracts
 {
@@ -13,7 +14,7 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// </summary>
         /// <param name="queryParameters"></param>
         /// <returns></returns>
-        Task<List<T>> GetAllAsync<T>( CancellationToken cancellationToken = default);
+        Task<List<T>> GetAllAsync<T>( CancellationToken cancellationToken = default) where T : BaseModel;
 
         /// <summary>
         /// Create an enntity

@@ -44,7 +44,7 @@ namespace SavingPlatformApplication.Services.Implementations
 
         public Task<List<Member>> GetMembersAsync()
         {
-            throw new NotImplementedException();
+            return _memberRepository.GetAllAsync<Member>();
         }
 
         public Task<Member> GetTotalMemberCountAsync()
