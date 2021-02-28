@@ -15,7 +15,7 @@ namespace SavingPlatformApplication.Data.Models
 
         public AssetCategories AssetCategory { get; set; }
 
-        public Guid OwnerId { get; set; }
-        public SavingsGroup Owner { get; set; }
+        public Guid SavingsGroupId { get; set; }
+        public SavingsGroup SavingsGroup { get; set; }
     }
 }
