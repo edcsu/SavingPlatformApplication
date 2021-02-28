@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -21,6 +22,7 @@ namespace SavingPlatformApplication.ViewModels.MemberViews
         [JsonConverter(typeof(StringEnumConverter))]
         public Gender Gender { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
         public double Balance { get; set; }
