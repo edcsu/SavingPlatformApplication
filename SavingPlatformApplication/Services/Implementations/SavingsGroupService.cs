@@ -6,6 +6,7 @@ using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Mapping;
 using SavingPlatformApplication.Repositories.Contracts;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.SavingsGroupViews;
 
 namespace SavingPlatformApplication.Services.Implementations
@@ -35,6 +36,28 @@ namespace SavingPlatformApplication.Services.Implementations
         public async Task<bool> DoesSavingsGroupExistAsync(Guid id)
         {
             return await _savingsGroupRepository.ExistsAsync<SavingsGroup>(id);
+        }
+
+        public async Task<SavingsGroupSearchResponse> GetPagedSavingsGroupAsync(SearchRequest searchRequest)
+        {
+            var savingsGroupViewList = new List<SavingsGroupViewModel>();
+
+            var savingsGroupList = await _savingsGroupRepository.GetAllPagedListAsync<SavingsGroup>(searchRequest);
+            foreach (var savingsGroup in savingsGroupList)
+            {
+                var viewModel = MapperProfiles.MapSavingsGroupModelToSavingsGroupViewModel(savingsGroup);
+                savingsGroupViewList.Add(viewModel);
+            }
+            return new SavingsGroupSearchResponse
+            {
+                SavingsGroupList = savingsGroupViewList,
+                Pagination = new SearchPagination
+                {
+                    ItemsPerPage = searchRequest.Pagination.ItemsPerPage,
+                    Page = searchRequest.Pagination.Page,
+                    TotalItems = await _savingsGroupRepository.GetCountAsync<SavingsGroup>()
+                },
+            };
         }
 
         public async Task<SavingsGroup> GetSavingsGroupAsync(Guid id)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SavingPlatformApplication.Data.Models;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.MemberViews;
 
 namespace SavingPlatformApplication.Services.Contracts
@@ -10,6 +11,8 @@ namespace SavingPlatformApplication.Services.Contracts
     public interface IMemberService
     {
         Task<List<Member>> GetMembersAsync();
+
+        Task<MemberSearchResponse> GetPagedMembersAsync(SearchRequest searchRequest);
         
         Task<MemberViewModel> GetMemberAsync(Guid id);
         

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.MemberViews;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,9 +24,9 @@ namespace SavingPlatformApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Member>> GetAsync()
+        public async Task<MemberSearchResponse> GetAsync([FromQuery] SearchRequest searchRequest)
         {
-            return await _memberService.GetMembersAsync();
+            return await _memberService.GetPagedMembersAsync(searchRequest);
         }
 
         [HttpGet("{id:Guid}")]

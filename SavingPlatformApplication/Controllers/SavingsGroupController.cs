@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.SavingsGroupViews;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,9 +23,9 @@ namespace SavingPlatformApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SavingsGroup>> GetAsync()
+        public async Task<SavingsGroupSearchResponse> GetAsync([FromQuery] SearchRequest searchRequest)
         {
-            return await _savingsGroupService.GetSavingsGroupsAsync();
+            return await _savingsGroupService.GetPagedSavingsGroupAsync(searchRequest);
         }
 
         [HttpGet("{id:Guid}")]

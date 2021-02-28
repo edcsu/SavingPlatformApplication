@@ -4,16 +4,27 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using SavingPlatformApplication.Data.Models;
+using SavingPlatformApplication.ViewModels;
 
 namespace SavingPlatformApplication.Repositories.Contracts
 {
     public interface IBaseRepository
     {
+
+        /// <summary>
+        ///   Gets a paginated list of all items.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="request">Request with paged components</param>
+        /// <param name="cancellation"></param>
+        /// <returns></returns>
+        Task<List<T>> GetAllPagedListAsync<T>(SearchRequest request, CancellationToken cancellation = default)
+            where T : BaseModel;
+
         /// <summary>
         /// Get All records of a given entity
         /// </summary>
         /// <param name="cancellationToken"></param>
-        /// <param name="queryParameters"></param>
         /// <returns></returns>
         Task<List<T>> GetAllAsync<T>( CancellationToken cancellationToken = default) where T : BaseModel;
 

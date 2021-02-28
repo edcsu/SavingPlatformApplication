@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SavingPlatformApplication.Data.Models;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.SavingsGroupViews;
 
 namespace SavingPlatformApplication.Services.Contracts
@@ -10,7 +11,8 @@ namespace SavingPlatformApplication.Services.Contracts
     public interface ISavingsGroupService
     {
         Task<List<SavingsGroup>> GetSavingsGroupsAsync();
-        
+        Task<SavingsGroupSearchResponse> GetPagedSavingsGroupAsync(SearchRequest searchRequest);
+
         Task<SavingsGroup> GetSavingsGroupAsync(Guid id);
         
         Task<int> GetTotalSavingsGroupCountAsync();

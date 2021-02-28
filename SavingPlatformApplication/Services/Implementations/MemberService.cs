@@ -6,6 +6,7 @@ using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Mapping;
 using SavingPlatformApplication.Repositories.Contracts;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.MemberViews;
 
 namespace SavingPlatformApplication.Services.Implementations
@@ -46,6 +47,28 @@ namespace SavingPlatformApplication.Services.Implementations
         public async Task<List<Member>> GetMembersAsync()
         {
             return await _memberRepository.GetAllAsync<Member>();
+        }
+
+        public async Task<MemberSearchResponse> GetPagedMembersAsync(SearchRequest searchRequest)
+        {
+
+            var memberViewList = new List<MemberViewModel>();
+
+            var memberList = await _memberRepository.GetAllPagedListAsync<Member>(searchRequest);
+            foreach (var member in memberList)
+            {
+                var viewModel = MapperProfiles.MapMemberModelToMemberViewModel(member);
+                memberViewList.Add(viewModel);
+            }
+            return new MemberSearchResponse{
+                MembersList =  memberViewList,
+                Pagination = new SearchPagination
+                {
+                    ItemsPerPage = searchRequest.Pagination.ItemsPerPage,
+                    Page = searchRequest.Pagination.Page,
+                    TotalItems = await _memberRepository.GetCountAsync<Member>()
+                },
+            };
         }
 
         public async Task<int> GetTotalMemberCountAsync()

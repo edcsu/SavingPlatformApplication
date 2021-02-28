@@ -4,12 +4,20 @@
         <name>SavingPlatformApplication</name>
     </assembly>
     <members>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.GetAllPagedListAsync``1(SavingPlatformApplication.ViewModels.SearchRequest,System.Threading.CancellationToken)">
+            <summary>
+              Gets a paginated list of all items.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="request">Request with paged components</param>
+            <param name="cancellation"></param>
+            <returns></returns>
+        </member>
         <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.GetAllAsync``1(System.Threading.CancellationToken)">
             <summary>
             Get All records of a given entity
             </summary>
             <param name="cancellationToken"></param>
-            <param name="queryParameters"></param>
             <returns></returns>
         </member>
         <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.AddAsync``1(``0,System.Threading.CancellationToken)">
@@ -58,6 +66,21 @@
             <param name="id"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
+        </member>
+        <member name="P:SavingPlatformApplication.ViewModels.SearchPagination.Page">
+            <summary>
+            Page number
+            </summary>
+        </member>
+        <member name="P:SavingPlatformApplication.ViewModels.SearchPagination.ItemsPerPage">
+            <summary>
+            Number of requests returned per page
+            </summary>
+        </member>
+        <member name="P:SavingPlatformApplication.ViewModels.SearchPagination.TotalItems">
+            <summary>
+            Total number of requests
+            </summary>
         </member>
     </members>
 </doc>

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using SavingPlatformApplication.Data;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Repositories.Contracts;
+using SavingPlatformApplication.ViewModels;
 
 namespace SavingPlatformApplication.Repositories.Implementations
 {
@@ -50,6 +51,14 @@ namespace SavingPlatformApplication.Repositories.Implementations
         public async Task<List<T>> GetAllAsync<T>(CancellationToken cancellationToken = default) where T : BaseModel
         {
             return await _context.Set<T>().ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<T>> GetAllPagedListAsync<T>(SearchRequest request, CancellationToken cancellationToken = default) where T : BaseModel
+        {
+            return await _context.Set<T>()
+                .Skip((request.Pagination.Page - 1) * request.Pagination.ItemsPerPage)
+                .Take(request.Pagination.ItemsPerPage)
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<int> GetCountAsync<T>(CancellationToken cancellationToken = default) where T : BaseModel
