@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SavingPlatformApplication</name>
+    </assembly>
+    <members>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.GetAllAsync``1(System.Threading.CancellationToken)">
+            <summary>
+            Get All records of a given entity
+            </summary>
+            <param name="queryParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.AddAsync``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            Create an enntity
+            </summary>
+            <param name="t">Entity is of type T</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.ExistsAsync``1(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Check whether an entity of type T exists 
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.GetCountAsync``1(System.Threading.CancellationToken)">
+            <summary>
+            Get the total number of entities
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.FindAsync``1(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Find an entity of type T
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingPlatformApplication.Repositories.Contracts.IBaseRepository.UpdateAsync``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            Update an entity of type T
+            </summary>
+            <param name="t"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

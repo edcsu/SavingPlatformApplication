@@ -26,6 +26,7 @@ namespace SavingPlatformApplication.Data.DatabaseInitializer
                 .RuleFor(m => m.FullName, f => f.Name.FullName())
                 .RuleFor(m => m.Email, f => f.Person.Email)
                 .RuleFor(m => m.PhoneNumber, f => f.Phone.PhoneNumberFormat())
+                .RuleFor(m => m.BirthDate, f => f.Date.Past(30).ToUniversalTime())
                 .RuleFor(m => m.DateCreated, f => f.Date.Past(1).ToUniversalTime())
                 .RuleFor(m => m.Address, f => GetSampleAddress())
                 .RuleFor(m => m.Balance, f => Convert.ToDouble(f.Finance.Amount(min: 10000, max: 1000000000)));

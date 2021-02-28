@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using SavingPlatformApplication.Data.Models.Enums;
 
 namespace SavingPlatformApplication.Data.Models
@@ -10,6 +12,7 @@ namespace SavingPlatformApplication.Data.Models
     {
         public double Price { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public TransactionType Type { get; set; }
 
         public Guid SavingsGroupId { get; set; }
