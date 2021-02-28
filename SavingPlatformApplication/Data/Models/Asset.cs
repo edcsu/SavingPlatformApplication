@@ -6,7 +6,7 @@ using SavingPlatformApplication.Data.Models.Enums;
 
 namespace SavingPlatformApplication.Data.Models
 {
-    public class Asset
+    public class Asset : BaseModel
     {
 #nullable disable
         public string Name { get; set; }

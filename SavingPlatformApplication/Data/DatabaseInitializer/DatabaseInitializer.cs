@@ -12,23 +12,11 @@ namespace SavingPlatformApplication.Data.DatabaseInitializer
         {
             context.Database.Migrate();
 
-            if (!await context.Members.AnyAsync())
-            {
-                SeedMembers(context);
-                await context.SaveChangesAsync();
-            }
-            
             if (!await context.SavingsGroups.AnyAsync())
             {
                 SeedSavingsGroups(context);
                 await context.SaveChangesAsync();
             }
-        }
-
-        private static void SeedMembers(ApplicationDbContext context)
-        {
-            context.Members.AddRange(GenerateFakeData.GetSampleMembers(150));
-            context.SaveChanges();
         }
 
         private static void SeedSavingsGroups(ApplicationDbContext context)
