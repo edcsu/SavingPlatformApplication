@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels.MemberViews;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,15 +31,16 @@ namespace SavingPlatformApplication.Controllers
 
         // GET api/<MembersController>/5
         [HttpGet("{id:Guid}")]
-        public string Get(Guid id)
+        public async Task<MemberViewModel> GetAsync(Guid id)
         {
-            return "value";
+            return await _memberService.GetMemberAsync(id);
         }
 
         // POST api/<MembersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<MemberViewModel> PostAsync([FromBody] MemberPostModel postModel)
         {
+            return await _memberService.AddMemberAsync(postModel);
         }
 
         // PUT api/<MembersController>/5

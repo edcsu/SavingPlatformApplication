@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SavingPlatformApplication.Data.Models;
+using SavingPlatformApplication.ViewModels.MemberViews;
 
 namespace SavingPlatformApplication.Services.Contracts
 {
@@ -10,13 +11,13 @@ namespace SavingPlatformApplication.Services.Contracts
     {
         Task<List<Member>> GetMembersAsync();
         
-        Task<Member> GetMemberAsync();
+        Task<MemberViewModel> GetMemberAsync(Guid id);
         
-        Task<Member> GetTotalMemberCountAsync();
+        Task<int> GetTotalMemberCountAsync();
         
         Task<Member> DoesMemberExistAsync();
 
-        Task<Member> AddMemberAsync();
+        Task<MemberViewModel> AddMemberAsync(MemberPostModel postModel);
 
         Task<Member> FindMemberAsync();
 

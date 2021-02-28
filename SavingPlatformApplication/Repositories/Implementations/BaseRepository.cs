@@ -19,19 +19,32 @@ namespace SavingPlatformApplication.Repositories.Implementations
             _context = context;
         }
 
-        public Task<T> AddAsync<T>(T t, CancellationToken cancellationToken = default)
+        public async Task<T> AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T : BaseModel
         {
-            throw new NotImplementedException();
+            await _context.Set<T>().AddAsync(entity);
+            
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return entity;
         }
 
-        public Task<bool> ExistsAsync<T>(Guid id, CancellationToken cancellationToken = default)
+        public async Task<T> DeleteAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel
         {
-            throw new NotImplementedException();
+            var customer = await _context.Set<T>().SingleAsync(a => a.Id == id);
+            _context.Set<T>().Remove(customer);
+
+            await _context.SaveChangesAsync();
+            return customer;
         }
 
-        public Task<T> FindAsync<T>(Guid id, CancellationToken cancellationToken = default)
+        public async Task<bool> ExistsAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().AnyAsync(x => x.Id == id, cancellationToken);
+        }
+
+        public async Task<T> FindAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
         public async Task<List<T>> GetAllAsync<T>(CancellationToken cancellationToken = default) where T : BaseModel
@@ -39,14 +52,18 @@ namespace SavingPlatformApplication.Repositories.Implementations
             return await _context.Set<T>().ToListAsync(cancellationToken);
         }
 
-        public Task<int> GetCountAsync<T>(CancellationToken cancellationToken = default)
+        public async Task<int> GetCountAsync<T>(CancellationToken cancellationToken = default) where T : BaseModel
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().CountAsync(cancellationToken);
         }
 
-        public Task<T> UpdateAsync<T>(T t, CancellationToken cancellationToken = default)
+        public async Task<T> UpdateAsync<T>(T entity, CancellationToken cancellationToken = default) where T : BaseModel
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return entity;
         }
     }
 }

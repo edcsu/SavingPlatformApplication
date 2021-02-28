@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SavingPlatformApplication.Data.Models;
+using SavingPlatformApplication.Mapping;
 using SavingPlatformApplication.Repositories.Contracts;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels.MemberViews;
 
 namespace SavingPlatformApplication.Services.Implementations
 {
@@ -17,9 +19,12 @@ namespace SavingPlatformApplication.Services.Implementations
             _memberRepository = memberRepository;
         }
 
-        public Task<Member> AddMemberAsync()
+        public async Task<MemberViewModel> AddMemberAsync(MemberPostModel postModel)
         {
-            throw new NotImplementedException();
+            var model = MapperProfiles.MapMemberPostModeltoMemberModel(postModel);
+
+            var member = await _memberRepository.AddAsync(model);
+            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
         }
 
         public Task<Member> DeleteMemberAsync()
@@ -37,19 +42,20 @@ namespace SavingPlatformApplication.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<Member> GetMemberAsync()
+        public async Task<MemberViewModel> GetMemberAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var member = await _memberRepository.FindAsync<Member>(id);
+            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
         }
 
-        public Task<List<Member>> GetMembersAsync()
+        public async Task<List<Member>> GetMembersAsync()
         {
-            return _memberRepository.GetAllAsync<Member>();
+            return await _memberRepository.GetAllAsync<Member>();
         }
 
-        public Task<Member> GetTotalMemberCountAsync()
+        public async Task<int> GetTotalMemberCountAsync()
         {
-            throw new NotImplementedException();
+            return await _memberRepository.GetCountAsync<Member>();
         }
 
         public Task<Member> UpdateMemberAsync()

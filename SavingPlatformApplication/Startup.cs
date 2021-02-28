@@ -37,7 +37,6 @@ namespace SavingPlatformApplication
                 .AddNewtonsoftJson(opts =>
                 {
                     opts.SerializerSettings.Converters.Add(new StringEnumConverter());
-                    opts.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                 });
 
             services.AddScoped<IAddressRepository, AddressRepository>();
