@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
+using SavingPlatformApplication.ViewModels.SavingsGroupViews;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,13 +35,15 @@ namespace SavingPlatformApplication.Controllers
 
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<SavingsGroupViewModel> PostAsync([FromBody] SavingsGroupPostModel postModel)
         {
+            return await _savingsGroupService.AddSavingsGroupAsync(postModel);
         }
 
         [HttpPut("{id:Guid}")]
-        public void Put(Guid id, [FromBody] string value)
+        public async Task<SavingsGroupViewModel> PutAsync(Guid id, [FromBody] SavingsGroupUpdateModel updateModel)
         {
+            return await _savingsGroupService.UpdateSavingsGroupAsync(id, updateModel);
         }
 
         [HttpDelete("{id:Guid}")]
