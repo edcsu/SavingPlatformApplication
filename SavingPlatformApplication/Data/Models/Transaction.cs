@@ -12,10 +12,8 @@ namespace SavingPlatformApplication.Data.Models
 
         public TransactionType Type { get; set; }
 
-        public Guid ClientId { get; set; }
-        public bool IsMadeByMember { get; set; }
-
+        public Guid SavingsGroupId { get; set; }
 #nullable disable
-        public Client Client { get; set; }
+        public SavingsGroup SavingsGroup { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using SavingPlatformApplication.Data;
 using SavingPlatformApplication.Data.DatabaseInitializer;
 using Serilog;
 using Serilog.Events;
+using Serilog.Formatting.Compact;
 
 namespace SavingPlatformApplication
 {
@@ -25,7 +26,7 @@ namespace SavingPlatformApplication
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .WriteTo.File("Logs\\contosographqlapi.txt", rollingInterval: RollingInterval.Hour)
-                .WriteTo.File("Logs\\contosographqlapi.json", rollingInterval: RollingInterval.Hour)
+                .WriteTo.File(new CompactJsonFormatter(), "Logs\\contosographqlapi.json")
                 .CreateLogger();
 
             var host = CreateWebHostBuilder(args).Build();

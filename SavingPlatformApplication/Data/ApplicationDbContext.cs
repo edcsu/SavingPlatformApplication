@@ -20,6 +20,8 @@ namespace SavingPlatformApplication.Data
         {
         }
 
+        public DbSet<Asset> Assets { get; set; }
+
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Credit> Credits { get; set; }

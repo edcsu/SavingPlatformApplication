@@ -10,10 +10,9 @@ namespace SavingPlatformApplication.Data.Models
 
         public DateTime PaymentPeriod { get; set; }
 
-
+        public Guid SavingsGroupId { get; set; }
 #nullable disable
-        public Guid ClientId { get; set; }
-        public Client Client { get; set; }
+        public SavingsGroup SavingsGroup { get; set; }
 
     }
 }

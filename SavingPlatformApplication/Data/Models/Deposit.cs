@@ -6,8 +6,8 @@ namespace SavingPlatformApplication.Data.Models
     {
         public double Amount { get; set; }
 
-        public Guid ClientId { get; set; }
+        public Guid SavingsGroupId { get; set; }
 #nullable disable
-        public Client Client { get; set; }
+        public SavingsGroup SavingsGroup { get; set; }
     }
 }
