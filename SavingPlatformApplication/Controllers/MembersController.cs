@@ -45,8 +45,9 @@ namespace SavingPlatformApplication.Controllers
 
         // PUT api/<MembersController>/5
         [HttpPut("{id:Guid}")]
-        public void Put(Guid id, [FromBody] string value)
+        public async Task<MemberViewModel> PutAsync(Guid id, [FromBody] MemberUpdateModel updateModel)
         {
+            return await _memberService.UpdateMemberAsync(id, updateModel);
         }
 
         // DELETE api/<MembersController>/5

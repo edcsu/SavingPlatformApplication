@@ -32,14 +32,9 @@ namespace SavingPlatformApplication.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<Member> DoesMemberExistAsync()
+        public async Task<bool> DoesMemberExistAsync(Guid id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Member> FindMemberAsync()
-        {
-            throw new NotImplementedException();
+            return await _memberRepository.ExistsAsync<Member>(id);
         }
 
         public async Task<MemberViewModel> GetMemberAsync(Guid id)
@@ -58,9 +53,12 @@ namespace SavingPlatformApplication.Services.Implementations
             return await _memberRepository.GetCountAsync<Member>();
         }
 
-        public Task<Member> UpdateMemberAsync()
+        public async Task<MemberViewModel> UpdateMemberAsync(Guid id, MemberUpdateModel updateModel)
         {
-            throw new NotImplementedException();
+            var model = MapperProfiles.MapMemberUpdateModeltoMemberModel(id, updateModel);
+
+            var member = await _memberRepository.UpdateAsync(model);
+            return MapperProfiles.MapMemberModeltoMemberViewModel(member);
         }
     }
 }

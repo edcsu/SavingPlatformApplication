@@ -22,6 +22,21 @@ namespace SavingPlatformApplication.Mapping
             return model;
         }
         
+        public static Member MapMemberUpdateModeltoMemberModel(Guid id, MemberUpdateModel updateModel)
+        {
+            var model = new Member() {
+                Id = id,
+                Email = updateModel.Email,
+                Balance = updateModel.Balance,
+                BirthDate = updateModel.BirthDate,
+                DateUpdated = DateTime.UtcNow,
+                FullName = updateModel.FullName,
+                Gender = updateModel.Gender,
+                PhoneNumber = updateModel.PhoneNumber
+            };
+            return model;
+        }
+        
         public static MemberViewModel MapMemberModeltoMemberViewModel(Member member)
         {
             var viewModel = new MemberViewModel() {

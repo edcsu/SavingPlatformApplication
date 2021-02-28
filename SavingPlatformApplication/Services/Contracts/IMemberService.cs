@@ -15,13 +15,11 @@ namespace SavingPlatformApplication.Services.Contracts
         
         Task<int> GetTotalMemberCountAsync();
         
-        Task<Member> DoesMemberExistAsync();
+        Task<bool> DoesMemberExistAsync(Guid id);
 
         Task<MemberViewModel> AddMemberAsync(MemberPostModel postModel);
 
-        Task<Member> FindMemberAsync();
-
-        Task<Member> UpdateMemberAsync();
+        Task<MemberViewModel> UpdateMemberAsync(Guid id, MemberUpdateModel updateModel);
 
         Task<Member> DeleteMemberAsync();
 
