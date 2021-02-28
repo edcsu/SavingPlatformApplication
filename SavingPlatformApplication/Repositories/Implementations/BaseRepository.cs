@@ -28,13 +28,13 @@ namespace SavingPlatformApplication.Repositories.Implementations
             return entity;
         }
 
-        public async Task<T> DeleteAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel
+        public virtual async Task<Guid> DeleteAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel
         {
-            var customer = await _context.Set<T>().SingleAsync(a => a.Id == id);
-            _context.Set<T>().Remove(customer);
+            var entity = await _context.Set<T>().SingleAsync(a => a.Id == id);
+            _context.Set<T>().Remove(entity);
 
             await _context.SaveChangesAsync();
-            return customer;
+            return id;
         }
 
         public async Task<bool> ExistsAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel

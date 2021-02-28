@@ -21,7 +21,7 @@ namespace SavingPlatformApplication.Services.Contracts
 
         Task<MemberViewModel> UpdateMemberAsync(Guid id, MemberUpdateModel updateModel);
 
-        Task<Member> DeleteMemberAsync();
+        Task<Guid> DeleteMemberAsync(Guid id);
 
     }
 }

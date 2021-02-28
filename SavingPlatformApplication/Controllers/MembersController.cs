@@ -52,8 +52,9 @@ namespace SavingPlatformApplication.Controllers
 
         // DELETE api/<MembersController>/5
         [HttpDelete("{id:Guid}")]
-        public void Delete(Guid id)
+        public async Task<Guid> DeleteAsync(Guid id)
         {
+            return await _memberService.DeleteMemberAsync(id);
         }
     }
 }

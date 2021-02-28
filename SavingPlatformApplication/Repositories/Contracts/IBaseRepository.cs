@@ -62,6 +62,6 @@ namespace SavingPlatformApplication.Repositories.Contracts
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<T> DeleteAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel;
+        Task<Guid> DeleteAsync<T>(Guid id, CancellationToken cancellationToken = default) where T : BaseModel;
     }
 }

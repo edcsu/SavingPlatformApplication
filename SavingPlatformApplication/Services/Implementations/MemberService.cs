@@ -27,9 +27,9 @@ namespace SavingPlatformApplication.Services.Implementations
             return MapperProfiles.MapMemberModeltoMemberViewModel(member);
         }
 
-        public Task<Member> DeleteMemberAsync()
+        public async Task<Guid> DeleteMemberAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _memberRepository.DeleteAsync<Member>(id);
         }
 
         public async Task<bool> DoesMemberExistAsync(Guid id)
