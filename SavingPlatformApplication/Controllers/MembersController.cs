@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SavingPlatformApplication.Core.Exceptions;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
 using SavingPlatformApplication.ViewModels;
@@ -26,6 +27,10 @@ namespace SavingPlatformApplication.Controllers
         [HttpGet]
         public async Task<MemberSearchResponse> GetAsync([FromQuery] SearchRequest searchRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ModelStateException("Missing required information");
+            }
             return await _memberService.GetPagedMembersAsync(searchRequest);
         }
 
@@ -38,12 +43,20 @@ namespace SavingPlatformApplication.Controllers
         [HttpPost]
         public async Task<MemberViewModel> PostAsync([FromBody] MemberPostModel postModel)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ModelStateException("Missing required information");
+            }
             return await _memberService.AddMemberAsync(postModel);
         }
 
         [HttpPut("{id:Guid}")]
         public async Task<MemberViewModel> PutAsync(Guid id, [FromBody] MemberUpdateModel updateModel)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ModelStateException("Missing required information");
+            }
             return await _memberService.UpdateMemberAsync(id, updateModel);
         }
 

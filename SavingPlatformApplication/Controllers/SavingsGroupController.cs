@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SavingPlatformApplication.Core.Exceptions;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
 using SavingPlatformApplication.ViewModels;
@@ -29,7 +30,7 @@ namespace SavingPlatformApplication.Controllers
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<SavingsGroup> GetAsync(Guid id)
+        public async Task<SavingsGroupViewModel> GetAsync(Guid id)
         {
             return await _savingsGroupService.GetSavingsGroupAsync(id);
         }
@@ -38,12 +39,20 @@ namespace SavingPlatformApplication.Controllers
         [HttpPost]
         public async Task<SavingsGroupViewModel> PostAsync([FromBody] SavingsGroupPostModel postModel)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ModelStateException("Missing required information");
+            }
             return await _savingsGroupService.AddSavingsGroupAsync(postModel);
         }
 
         [HttpPut("{id:Guid}")]
         public async Task<SavingsGroupViewModel> PutAsync(Guid id, [FromBody] SavingsGroupUpdateModel updateModel)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ModelStateException("Missing required information");
+            }
             return await _savingsGroupService.UpdateSavingsGroupAsync(id, updateModel);
         }
 

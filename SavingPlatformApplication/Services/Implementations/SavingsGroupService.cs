@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SavingPlatformApplication.Core.Exceptions;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Mapping;
 using SavingPlatformApplication.Repositories.Contracts;
@@ -60,9 +61,15 @@ namespace SavingPlatformApplication.Services.Implementations
             };
         }
 
-        public async Task<SavingsGroup> GetSavingsGroupAsync(Guid id)
+        public async Task<SavingsGroupViewModel> GetSavingsGroupAsync(Guid id)
         {
-            return await _savingsGroupRepository.FindAsync<SavingsGroup>(id);
+            var savingsGroup = await _savingsGroupRepository.FindAsync<SavingsGroup>(id);
+            if (savingsGroup == null)
+            {
+                throw new NotFoundException($"Failed to find savingsgroup with Id: {id}");
+            }
+
+            return MapperProfiles.MapSavingsGroupModelToSavingsGroupViewModel(savingsGroup);
         }
 
         public async Task<List<SavingsGroup>> GetSavingsGroupsAsync()
@@ -79,7 +86,7 @@ namespace SavingPlatformApplication.Services.Implementations
         {
             var model = MapperProfiles.MapSavingsGroupUpdateModelToSavingsGroupModel(id, updateModel);
 
-            var member = await _savingsGroupRepository.AddAsync(model);
+            var member = await _savingsGroupRepository.UpdateAsync(model);
             return MapperProfiles.MapSavingsGroupModelToSavingsGroupViewModel(member);
         }
     }

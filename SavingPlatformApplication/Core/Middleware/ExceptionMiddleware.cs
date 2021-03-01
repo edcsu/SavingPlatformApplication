@@ -41,6 +41,10 @@ namespace SavingPlatformApplication.Core.Middleware
                     context.Response.StatusCode = 400;
                     message = ex.Message;
                     break;
+                case ModelStateException _:
+                    context.Response.StatusCode = 400;
+                    message = ex.Message;
+                    break;
                 case DbUpdateException _:
                     context.Response.StatusCode = 500;
                     message = ex.Message;

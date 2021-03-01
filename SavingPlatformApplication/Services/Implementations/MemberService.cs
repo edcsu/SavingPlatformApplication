@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SavingPlatformApplication.Core.Exceptions;
 using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Mapping;
 using SavingPlatformApplication.Repositories.Contracts;
@@ -41,6 +42,11 @@ namespace SavingPlatformApplication.Services.Implementations
         public async Task<MemberViewModel> GetMemberAsync(Guid id)
         {
             var member = await _memberRepository.FindAsync<Member>(id);
+            if (member == null)
+            {
+                throw new NotFoundException($"Failed to find a member with Id: {id}");
+            }
+
             return MapperProfiles.MapMemberModelToMemberViewModel(member);
         }
 

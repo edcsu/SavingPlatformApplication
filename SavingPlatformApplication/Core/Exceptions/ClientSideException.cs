@@ -11,4 +11,9 @@ namespace SavingPlatformApplication.Core.Exceptions
         {
         }
     }
+
+    public class NotFoundException : ClientSideException
+    {
+        public NotFoundException(string message) : base(message) { }
+    }
 }

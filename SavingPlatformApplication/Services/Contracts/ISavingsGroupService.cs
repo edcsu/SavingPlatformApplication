@@ -13,7 +13,7 @@ namespace SavingPlatformApplication.Services.Contracts
         Task<List<SavingsGroup>> GetSavingsGroupsAsync();
         Task<SavingsGroupSearchResponse> GetPagedSavingsGroupAsync(SearchRequest searchRequest);
 
-        Task<SavingsGroup> GetSavingsGroupAsync(Guid id);
+        Task<SavingsGroupViewModel> GetSavingsGroupAsync(Guid id);
         
         Task<int> GetTotalSavingsGroupCountAsync();
         
