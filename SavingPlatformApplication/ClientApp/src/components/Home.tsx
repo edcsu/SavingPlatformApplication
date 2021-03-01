@@ -8,7 +8,7 @@ const Home = () => (
         <Card inverse>
             <CardImg width="100%" src={hero} alt="savings"/>
             <CardImgOverlay>
-                <CardTitle className="text-primary text-center" tag="h1">Savings Platform Application</CardTitle>
+                <CardTitle className="text-primary text-center hero-text font-weight-bold" tag="h1">Savings Platform Application</CardTitle>
                 <CardText className="text-primary text-center">Save when you can with us.</CardText>
             </CardImgOverlay>
         </Card>
