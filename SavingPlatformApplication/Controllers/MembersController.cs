@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavingPlatformApplication.Core.Exceptions;
-using SavingPlatformApplication.Data.Models;
 using SavingPlatformApplication.Services.Contracts;
 using SavingPlatformApplication.ViewModels;
 using SavingPlatformApplication.ViewModels.MemberViews;

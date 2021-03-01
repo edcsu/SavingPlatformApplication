@@ -12,7 +12,7 @@ namespace SavingPlatformApplication.ViewModels.SavingsGroupViews
     {
 #nullable disable
         [Required]
-        public AddressPostModel Address { get; set; }
+        public AddressUpdateModel Address { get; set; }
 
         [Required]
         public string Email { get; set; }
