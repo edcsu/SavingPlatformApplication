@@ -5,7 +5,7 @@ import './NavMenu.css';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {
-        isOpen: false
+        isOpen: false,
     };
 
     public render() {
@@ -25,6 +25,9 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                 </NavItem>
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/swagger" target="_blank">API Documentation</NavLink>
                                 </NavItem>
                             </ul>
                         </Collapse>
